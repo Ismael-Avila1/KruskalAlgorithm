@@ -77,7 +77,7 @@ namespace KruskalAlgorithm
             v_d.addEdge(v_d, v_o);
 
             fillTreeView();
-
+            drawGraph();
             fillComboBoxOrigin();
             comboBoxDestinationVertex.Items.Clear();
         }
@@ -87,6 +87,7 @@ namespace KruskalAlgorithm
         // ************* Show Grahp Methods *************
         void drawGraph()
         {
+            drawEdges();
             drawVertices();
             drawIds();
 
@@ -111,6 +112,16 @@ namespace KruskalAlgorithm
             
             foreach(Vertex vertex in graph.Vertices)
                 g.DrawString(vertex.Id.ToString(), f, b, vertex.Position);
+        }
+
+        void drawEdges()
+        {
+            Graphics g = Graphics.FromImage(bmpGraph);
+            Pen p = new Pen(Color.BlueViolet);
+
+            foreach(Vertex v in graph.Vertices)
+                for (int i = 0; i < v.Edges.Count; i++)
+                    g.DrawLine(p, v.Position, v.getDestinationAt(i).Position);
         }
 
         void fillTreeView()
