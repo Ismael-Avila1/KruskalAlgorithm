@@ -8,17 +8,22 @@ namespace KruskalAlgorithm
 {
     internal class Graph
     {
-        Vertex[,] vertices;
+        List<Vertex> vertices;
 
-        public Graph() { }
-
-        public Graph(int size)
+        public Graph()
         {
-            vertices = new Vertex[size, size];
+            vertices = new List<Vertex>();
         }
 
-       
+       public void addVertex(int x, int y)
+        {
+            vertices.Add(new Vertex(vertices.Count+1, new Point(x, y)));
+        }
 
+        public int VertexCount
+        {
+            get { return vertices.Count; }
+        }
 
 
     }
