@@ -63,6 +63,24 @@ namespace KruskalAlgorithm
             fillComboBoxDestination();
         }
 
+        private void buttonCreateEdge_Click(object sender, EventArgs e)
+        {
+            Vertex v_o = (Vertex)comboBoxOriginVertex.SelectedItem;
+            Vertex v_d = (Vertex)comboBoxDestinationVertex.SelectedItem;
+
+            if(v_o == null || v_d == null) {
+                MessageBox.Show("Debes seleccionar de Origen y Destino", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            v_o.addEdge(v_o, v_d);
+            v_d.addEdge(v_d, v_o);
+
+            fillTreeView();
+
+            fillComboBoxOrigin();
+            comboBoxDestinationVertex.Items.Clear();
+        }
 
 
 
@@ -128,7 +146,7 @@ namespace KruskalAlgorithm
             comboBoxDestinationVertex.Items.Clear();
 
             foreach(Vertex v in graph.Vertices)
-                if(v != (Vertex)comboBoxOriginVertex.SelectedItem)
+                if(v != (Vertex)comboBoxOriginVertex.SelectedItem && !v.existEdge((Vertex)comboBoxOriginVertex.SelectedItem))
                     comboBoxDestinationVertex.Items.Add(v);
         }
 

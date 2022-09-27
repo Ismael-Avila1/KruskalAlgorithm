@@ -163,6 +163,7 @@
             this.buttonCreateEdge.TabIndex = 4;
             this.buttonCreateEdge.Text = "Crear Arista";
             this.buttonCreateEdge.UseVisualStyleBackColor = false;
+            this.buttonCreateEdge.Click += new System.EventHandler(this.buttonCreateEdge_Click);
             // 
             // comboBoxDestinationVertex
             // 

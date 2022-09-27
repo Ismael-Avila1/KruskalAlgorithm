@@ -40,15 +40,24 @@ namespace KruskalAlgorithm
             get { return edges; }
         }
 
-        public void addEdge(Edge edge)
+        public void addEdge(Vertex origin, Vertex destination)
         {
-            edges.Add(edge);
+            edges.Add(new Edge(origin, destination));
         }
 
         public Vertex getDestinationAt(int pos)
         {
             return edges[pos].Destination;
         }
+
+        public bool existEdge(Vertex destination)
+        {
+            foreach(Edge edge in edges)
+                if(edge.Destination == destination)
+                    return true;
+            return false;            
+        }
+
 
         public override string ToString()
         {
