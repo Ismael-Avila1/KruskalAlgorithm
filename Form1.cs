@@ -20,6 +20,8 @@ namespace KruskalAlgorithm
             graph = new Graph();
         }
 
+
+        // ************* Events *************
         private void buttonCreateVertices_Click(object sender, EventArgs e)
         {
             labelRemainingVertices.Text = "Selecciona dónde quieres poner los " + numericUpDownVerticesNumber.Value + " vértices en el lienzo de arriba!!";
@@ -52,9 +54,14 @@ namespace KruskalAlgorithm
             if(graph.VertexCount == (int)numericUpDownVerticesNumber.Value) {
                 drawGraph();
                 fillTreeView();
+                fillComboBoxOrigin();
             }
         }
 
+        private void comboBoxOriginVertex_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            fillComboBoxDestination();
+        }
 
 
 
@@ -101,6 +108,28 @@ namespace KruskalAlgorithm
                 }
                 treeView.Nodes.Add(node);
             }
+        }
+
+        
+        
+        
+        // ************* ComboBoxes *************
+        void fillComboBoxOrigin()
+        {
+            comboBoxOriginVertex.Items.Clear();
+
+            foreach(Vertex v in graph.Vertices)
+                if(v.Edges.Count < graph.VertexCount)
+                    comboBoxOriginVertex.Items.Add(v);
+        }
+
+        void fillComboBoxDestination()
+        {
+            comboBoxDestinationVertex.Items.Clear();
+
+            foreach(Vertex v in graph.Vertices)
+                if(v != (Vertex)comboBoxOriginVertex.SelectedItem)
+                    comboBoxDestinationVertex.Items.Add(v);
         }
 
     }

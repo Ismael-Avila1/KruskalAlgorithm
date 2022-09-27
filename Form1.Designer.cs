@@ -183,6 +183,7 @@
             this.comboBoxOriginVertex.Name = "comboBoxOriginVertex";
             this.comboBoxOriginVertex.Size = new System.Drawing.Size(203, 32);
             this.comboBoxOriginVertex.TabIndex = 2;
+            this.comboBoxOriginVertex.SelectedIndexChanged += new System.EventHandler(this.comboBoxOriginVertex_SelectedIndexChanged);
             // 
             // label4
             // 
