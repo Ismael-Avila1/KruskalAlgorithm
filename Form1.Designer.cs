@@ -229,6 +229,7 @@
             this.buttonCreateMST.TabIndex = 8;
             this.buttonCreateMST.Text = "Crear MST con Kruskal";
             this.buttonCreateMST.UseVisualStyleBackColor = false;
+            this.buttonCreateMST.Click += new System.EventHandler(this.buttonCreateMST_Click);
             // 
             // treeView
             // 

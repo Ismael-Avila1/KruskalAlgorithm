@@ -80,6 +80,14 @@ namespace KruskalAlgorithm
             drawGraph();
             fillComboBoxOrigin();
             comboBoxDestinationVertex.Items.Clear();
+
+            // validar si se añadio por lo menos una arista pada cada vertice (si el grafo ya es conexo)
+            buttonCreateMST.Enabled = true;
+        }
+
+        private void buttonCreateMST_Click(object sender, EventArgs e)
+        {
+            graph.kruskal();
         }
 
 
@@ -124,6 +132,9 @@ namespace KruskalAlgorithm
                     g.DrawLine(p, v.Position, v.getDestinationAt(i).Position);
         }
 
+
+
+        // ************* ComboBoxes *************
         void fillTreeView()
         {
             treeView.Nodes.Clear();
@@ -139,8 +150,7 @@ namespace KruskalAlgorithm
             }
         }
 
-        
-        
+
         
         // ************* ComboBoxes *************
         void fillComboBoxOrigin()

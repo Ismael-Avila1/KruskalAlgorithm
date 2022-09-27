@@ -30,5 +30,48 @@ namespace KruskalAlgorithm
             get { return vertices; }
         }
 
+
+
+        // Kruskal
+        public List<Edge> kruskal()
+        {
+            List<Edge> candidates = getCandidates();
+            List<Edge> promising = new List<Edge>();
+
+            int[,] CC = ccInitialize();
+
+
+
+            return promising;
+        }
+
+
+
+        List<Edge> getCandidates()
+        {
+            List<Edge> edges = new List<Edge>();
+
+            foreach(Vertex v in vertices)
+                foreach(Edge e in v.Edges)
+                    edges.Add(e);
+            
+            return edges;
+        }
+
+        int[,] ccInitialize()
+        {
+            int[,] cc = new int[VertexCount, VertexCount];
+
+            for(int i=0; i<VertexCount; i++)
+                for(int j=0; j<VertexCount; j++)
+                    cc[i, j] = -1;
+            
+            for(int i=0; i<VertexCount; i++)
+                cc[i, i] = vertices[i].Id;
+
+            return cc;
+        }
+
+
     }
 }
