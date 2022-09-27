@@ -13,7 +13,10 @@ namespace KruskalAlgorithm
             InitializeComponent();
             bmpOriginal = new Bitmap(pictureBox.Width, pictureBox.Height);
             pictureBox.Image = bmpOriginal;
+
+            bmpGraph = new Bitmap(pictureBox.Width, pictureBox.Height);
             
+
             graph = new Graph();
         }
 
@@ -40,12 +43,50 @@ namespace KruskalAlgorithm
 
             Graphics g = Graphics.FromImage(bmpOriginal);
             Brush b = new SolidBrush(Color.Black);
-            
-            g.FillEllipse(b, e.X - 20, e.Y - 20, 50, 50);
+            g.FillEllipse(b, e.X - 25, e.Y - 25, 50, 50);
 
             pictureBox.Refresh();
             labelRemainingVertices.Text = "Quedan " + (numericUpDownVerticesNumber.Value - graph.VertexCount) + " por agregar";
             labelRemainingVertices.ForeColor = Color.DarkGreen;
+
+            if(graph.VertexCount == (int)numericUpDownVerticesNumber.Value)
+                drawGraph();
         }
+
+
+
+
+
+        // ************* Show Grahp Methods *************
+        void drawGraph()
+        {
+            drawVertices();
+            drawIds();
+
+            pictureBox.Image = bmpGraph;
+            pictureBox.Refresh();
+        }
+
+        void drawVertices()
+        {
+            Graphics g = Graphics.FromImage(bmpGraph);
+            Brush b = new SolidBrush(Color.Black);
+
+            foreach (Vertex vertex in graph.Vertices)
+                g.FillEllipse(b, vertex.Position.X - 25, vertex.Position.Y - 25, 50, 50);
+        }
+
+        void drawIds()
+        {
+            Graphics g = Graphics.FromImage(bmpGraph);
+            Font f = new Font("Cascadia Code", 10);
+            SolidBrush b = new SolidBrush(Color.Red);
+            
+            foreach(Vertex vertex in graph.Vertices)
+                g.DrawString(vertex.Id.ToString(), f, b, vertex.Position);
+        }
+
+
+
     }
 }

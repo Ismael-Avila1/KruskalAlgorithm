@@ -25,6 +25,10 @@ namespace KruskalAlgorithm
             get { return vertices.Count; }
         }
 
+        public List<Vertex> Vertices
+        {
+            get { return vertices; }
+        }
 
     }
 }
