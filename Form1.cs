@@ -49,8 +49,10 @@ namespace KruskalAlgorithm
             labelRemainingVertices.Text = "Quedan " + (numericUpDownVerticesNumber.Value - graph.VertexCount) + " por agregar";
             labelRemainingVertices.ForeColor = Color.DarkGreen;
 
-            if(graph.VertexCount == (int)numericUpDownVerticesNumber.Value)
+            if(graph.VertexCount == (int)numericUpDownVerticesNumber.Value) {
                 drawGraph();
+                fillTreeView();
+            }
         }
 
 
@@ -86,7 +88,20 @@ namespace KruskalAlgorithm
                 g.DrawString(vertex.Id.ToString(), f, b, vertex.Position);
         }
 
+        void fillTreeView()
+        {
+            treeView.Nodes.Clear();
 
+            foreach(Vertex vertex in graph.Vertices) {
+                TreeNode node = new TreeNode(vertex.ToString());
+
+                for(int i=0; i<vertex.Edges.Count; i++) {
+                    TreeNode son = new TreeNode(vertex.getDestinationAt(i).ToString());
+                    node.Nodes.Add(son);
+                }
+                treeView.Nodes.Add(node);
+            }
+        }
 
     }
 }

@@ -12,12 +12,16 @@ namespace KruskalAlgorithm
         Point position;
         List<Edge> edges;
 
-        public Vertex() { }
+        public Vertex()
+        {
+            edges = new List<Edge>();
+        }
 
         public Vertex(int id, Point position)
         {
             this.id = id;
             this.position = position;
+            edges = new List<Edge>();
         }
 
 
@@ -36,16 +40,15 @@ namespace KruskalAlgorithm
             get { return edges; }
         }
 
-        public int EdgesCount
-        {
-            get { return edges.Count; }
-        }
-
         public void addEdge(Edge edge)
         {
             edges.Add(edge);
         }
 
+        public Vertex getDestinationAt(int pos)
+        {
+            return edges[pos].Destination;
+        }
 
         public override string ToString()
         {
