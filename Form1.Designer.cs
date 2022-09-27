@@ -54,14 +54,16 @@
             // 
             // pictureBox
             // 
-            this.pictureBox.BackColor = System.Drawing.Color.White;
+            this.pictureBox.BackColor = System.Drawing.SystemColors.ControlLight;
             this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox.Enabled = false;
             this.pictureBox.Location = new System.Drawing.Point(12, 12);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(700, 700);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
+            this.pictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseClick);
             // 
             // label1
             // 
@@ -75,19 +77,20 @@
             // 
             // label2
             // 
+            this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(6, 42);
+            this.label2.Location = new System.Drawing.Point(6, 51);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(447, 58);
+            this.label2.Size = new System.Drawing.Size(407, 24);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Selecciona la cantidad de vértices del grafo (10-30): ";
+            this.label2.Text = "Selecciona la cantidad de vértices del grafo: ";
             // 
             // numericUpDownVerticesNumber
             // 
             this.numericUpDownVerticesNumber.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericUpDownVerticesNumber.Location = new System.Drawing.Point(459, 55);
+            this.numericUpDownVerticesNumber.Location = new System.Drawing.Point(459, 47);
             this.numericUpDownVerticesNumber.Maximum = new decimal(new int[] {
-            30,
+            20,
             0,
             0,
             0});
@@ -97,8 +100,10 @@
             0,
             0});
             this.numericUpDownVerticesNumber.Name = "numericUpDownVerticesNumber";
+            this.numericUpDownVerticesNumber.ReadOnly = true;
             this.numericUpDownVerticesNumber.Size = new System.Drawing.Size(68, 32);
             this.numericUpDownVerticesNumber.TabIndex = 3;
+            this.numericUpDownVerticesNumber.UseWaitCursor = true;
             this.numericUpDownVerticesNumber.Value = new decimal(new int[] {
             10,
             0,
@@ -117,6 +122,7 @@
             this.buttonCreateVertices.TabIndex = 4;
             this.buttonCreateVertices.Text = "Añadir Vértices";
             this.buttonCreateVertices.UseVisualStyleBackColor = false;
+            this.buttonCreateVertices.Click += new System.EventHandler(this.buttonCreateVertices_Click);
             // 
             // groupBox1
             // 
@@ -280,6 +286,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVerticesNumber)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
