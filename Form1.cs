@@ -56,6 +56,16 @@ namespace KruskalAlgorithm
                 drawGraph(bmpGraph);
                 fillTreeView();
                 fillComboBoxOrigin();
+
+                DialogResult result = MessageBox.Show("¿Quieres generar las aristas del grafo automáticamente?", "Información", MessageBoxButtons.YesNo);
+
+                if(result == DialogResult.Yes) {
+                    graph.autoCreateEdges();
+                    drawGraph(bmpGraph);
+                    fillTreeView();
+                    groupBox2.Enabled = false;
+                    buttonCreateMST.Enabled = true;
+                }
             }
         }
 

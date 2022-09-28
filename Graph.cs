@@ -30,9 +30,17 @@ namespace KruskalAlgorithm
             get { return vertices; }
         }
 
+        public void autoCreateEdges()
+        {
+            foreach(Vertex v_o in vertices)
+                foreach(Vertex v_d in vertices)
+                    if(v_o != v_d)
+                        v_o.addEdge(v_o, v_d);
+        }
 
 
-        // Kruskal
+
+        // ************* Kruskal *************
         public List<Edge> kruskal()
         {
             List<Edge> candidates = getCandidates();
