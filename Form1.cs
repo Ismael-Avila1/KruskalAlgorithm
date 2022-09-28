@@ -6,7 +6,7 @@ namespace KruskalAlgorithm
 
         Bitmap bmpOriginal;
         Bitmap bmpGraph;
-
+        Bitmap bmpKruskal;
 
         public Form1()
         {
@@ -15,6 +15,7 @@ namespace KruskalAlgorithm
             pictureBox.Image = bmpOriginal;
 
             bmpGraph = new Bitmap(pictureBox.Width, pictureBox.Height);
+            bmpKruskal = new Bitmap(pictureBox.Width, pictureBox.Height);
             
 
             graph = new Graph();
@@ -52,7 +53,7 @@ namespace KruskalAlgorithm
             labelRemainingVertices.ForeColor = Color.DarkGreen;
 
             if(graph.VertexCount == (int)numericUpDownVerticesNumber.Value) {
-                drawGraph();
+                drawGraph(bmpGraph);
                 fillTreeView();
                 fillComboBoxOrigin();
             }
@@ -77,7 +78,7 @@ namespace KruskalAlgorithm
             v_d.addEdge(v_d, v_o);
 
             fillTreeView();
-            drawGraph();
+            drawGraph(bmpGraph);
             fillComboBoxOrigin();
             comboBoxDestinationVertex.Items.Clear();
 
@@ -87,34 +88,34 @@ namespace KruskalAlgorithm
 
         private void buttonCreateMST_Click(object sender, EventArgs e)
         {
-            graph.kruskal();
+            drawKruskal(graph.kruskal(), bmpKruskal);
         }
 
 
 
         // ************* Show Grahp Methods *************
-        void drawGraph()
+        void drawGraph(Bitmap bmp)
         {
-            drawEdges();
-            drawVertices();
-            drawIds();
+            drawEdges(bmp);
+            drawVertices(bmp);
+            drawIds(bmp);
 
-            pictureBox.Image = bmpGraph;
+            pictureBox.Image = bmp;
             pictureBox.Refresh();
         }
 
-        void drawVertices()
+        void drawVertices(Bitmap bmp)
         {
-            Graphics g = Graphics.FromImage(bmpGraph);
+            Graphics g = Graphics.FromImage(bmp);
             Brush b = new SolidBrush(Color.Black);
 
             foreach (Vertex vertex in graph.Vertices)
                 g.FillEllipse(b, vertex.Position.X - 25, vertex.Position.Y - 25, 50, 50);
         }
 
-        void drawIds()
+        void drawIds(Bitmap bmp)
         {
-            Graphics g = Graphics.FromImage(bmpGraph);
+            Graphics g = Graphics.FromImage(bmp);
             Font f = new Font("Cascadia Code", 10);
             SolidBrush b = new SolidBrush(Color.Red);
             
@@ -122,9 +123,9 @@ namespace KruskalAlgorithm
                 g.DrawString(vertex.Id.ToString(), f, b, vertex.Position);
         }
 
-        void drawEdges()
+        void drawEdges(Bitmap bmp)
         {
-            Graphics g = Graphics.FromImage(bmpGraph);
+            Graphics g = Graphics.FromImage(bmp);
             Pen p = new Pen(Color.BlueViolet);
 
             foreach(Vertex v in graph.Vertices)
@@ -132,9 +133,26 @@ namespace KruskalAlgorithm
                     g.DrawLine(p, v.Position, v.getDestinationAt(i).Position);
         }
 
+        void drawKruskal(List<Edge> mst, Bitmap bmp)
+        {
+            drawEdges(bmp);
+
+            Graphics g = Graphics.FromImage(bmp);
+            Pen p = new Pen(Color.Green, 4);
+
+            foreach (Edge edge in mst)
+                g.DrawLine(p, edge.Origin.Position, edge.Destination.Position);
+
+            drawVertices(bmp);
+            drawIds(bmp);
+
+            pictureBox.Image = bmp;
+            pictureBox.Refresh();
+        }
 
 
-        // ************* ComboBoxes *************
+
+        // ************* TreeView *************
         void fillTreeView()
         {
             treeView.Nodes.Clear();
