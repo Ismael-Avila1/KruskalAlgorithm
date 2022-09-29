@@ -34,27 +34,29 @@
             this.buttonCreateVertices = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.numericUpDownVerticesNumber = new System.Windows.Forms.NumericUpDown();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.buttonCreateEdge = new System.Windows.Forms.Button();
-            this.comboBoxDestinationVertex = new System.Windows.Forms.ComboBox();
-            this.comboBoxOriginVertex = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.labelRemainingVertices = new System.Windows.Forms.Label();
             this.buttonCreateMST = new System.Windows.Forms.Button();
             this.treeView = new System.Windows.Forms.TreeView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.buttonRestart = new System.Windows.Forms.Button();
+            this.listViewGraph = new System.Windows.Forms.ListView();
+            this.columnHeaderOrigin = new System.Windows.Forms.ColumnHeader();
+            this.columnHeaderDestination = new System.Windows.Forms.ColumnHeader();
+            this.columnHeaderWeight = new System.Windows.Forms.ColumnHeader();
+            this.listViewKruskal = new System.Windows.Forms.ListView();
+            this.columnHeaderOrig = new System.Windows.Forms.ColumnHeader();
+            this.columnHeaderDest = new System.Windows.Forms.ColumnHeader();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVerticesNumber)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox
             // 
-            this.pictureBox.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pictureBox.BackColor = System.Drawing.Color.White;
             this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox.Enabled = false;
             this.pictureBox.Location = new System.Drawing.Point(12, 12);
@@ -135,77 +137,6 @@
             0,
             0});
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.buttonCreateEdge);
-            this.groupBox2.Controls.Add(this.comboBoxDestinationVertex);
-            this.groupBox2.Controls.Add(this.comboBoxOriginVertex);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Enabled = false;
-            this.groupBox2.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox2.Location = new System.Drawing.Point(731, 325);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(539, 253);
-            this.groupBox2.TabIndex = 6;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Creación de Aristas";
-            // 
-            // buttonCreateEdge
-            // 
-            this.buttonCreateEdge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(150)))), ((int)(((byte)(30)))));
-            this.buttonCreateEdge.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonCreateEdge.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonCreateEdge.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonCreateEdge.Location = new System.Drawing.Point(10, 150);
-            this.buttonCreateEdge.Name = "buttonCreateEdge";
-            this.buttonCreateEdge.Size = new System.Drawing.Size(520, 80);
-            this.buttonCreateEdge.TabIndex = 4;
-            this.buttonCreateEdge.Text = "Crear Arista";
-            this.buttonCreateEdge.UseVisualStyleBackColor = false;
-            this.buttonCreateEdge.Click += new System.EventHandler(this.buttonCreateEdge_Click);
-            // 
-            // comboBoxDestinationVertex
-            // 
-            this.comboBoxDestinationVertex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxDestinationVertex.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBoxDestinationVertex.FormattingEnabled = true;
-            this.comboBoxDestinationVertex.Location = new System.Drawing.Point(324, 101);
-            this.comboBoxDestinationVertex.Name = "comboBoxDestinationVertex";
-            this.comboBoxDestinationVertex.Size = new System.Drawing.Size(203, 32);
-            this.comboBoxDestinationVertex.TabIndex = 3;
-            // 
-            // comboBoxOriginVertex
-            // 
-            this.comboBoxOriginVertex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxOriginVertex.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBoxOriginVertex.FormattingEnabled = true;
-            this.comboBoxOriginVertex.Location = new System.Drawing.Point(324, 41);
-            this.comboBoxOriginVertex.Name = "comboBoxOriginVertex";
-            this.comboBoxOriginVertex.Size = new System.Drawing.Size(203, 32);
-            this.comboBoxOriginVertex.TabIndex = 2;
-            this.comboBoxOriginVertex.SelectedIndexChanged += new System.EventHandler(this.comboBoxOriginVertex_SelectedIndexChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(6, 105);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(297, 24);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Selecciona el vértice de destino:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(6, 45);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(287, 24);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Selecciona el vértice de origen:";
-            // 
             // labelRemainingVertices
             // 
             this.labelRemainingVertices.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -238,7 +169,7 @@
             this.treeView.ForeColor = System.Drawing.Color.LavenderBlush;
             this.treeView.Location = new System.Drawing.Point(6, 26);
             this.treeView.Name = "treeView";
-            this.treeView.Size = new System.Drawing.Size(272, 436);
+            this.treeView.Size = new System.Drawing.Size(272, 453);
             this.treeView.TabIndex = 9;
             // 
             // groupBox3
@@ -267,17 +198,92 @@
             this.buttonRestart.Text = "Reestablecer Grafo";
             this.buttonRestart.UseVisualStyleBackColor = false;
             // 
+            // listViewGraph
+            // 
+            this.listViewGraph.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderOrigin,
+            this.columnHeaderDestination,
+            this.columnHeaderWeight});
+            this.listViewGraph.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.listViewGraph.Location = new System.Drawing.Point(731, 359);
+            this.listViewGraph.Name = "listViewGraph";
+            this.listViewGraph.Size = new System.Drawing.Size(325, 219);
+            this.listViewGraph.TabIndex = 0;
+            this.listViewGraph.UseCompatibleStateImageBehavior = false;
+            this.listViewGraph.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeaderOrigin
+            // 
+            this.columnHeaderOrigin.Text = "Origen";
+            this.columnHeaderOrigin.Width = 90;
+            // 
+            // columnHeaderDestination
+            // 
+            this.columnHeaderDestination.Text = "Destino";
+            this.columnHeaderDestination.Width = 90;
+            // 
+            // columnHeaderWeight
+            // 
+            this.columnHeaderWeight.Text = "Distancia";
+            this.columnHeaderWeight.Width = 140;
+            // 
+            // listViewKruskal
+            // 
+            this.listViewKruskal.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderOrig,
+            this.columnHeaderDest});
+            this.listViewKruskal.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.listViewKruskal.Location = new System.Drawing.Point(1090, 359);
+            this.listViewKruskal.Name = "listViewKruskal";
+            this.listViewKruskal.Size = new System.Drawing.Size(180, 219);
+            this.listViewKruskal.TabIndex = 12;
+            this.listViewKruskal.UseCompatibleStateImageBehavior = false;
+            this.listViewKruskal.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeaderOrig
+            // 
+            this.columnHeaderOrig.Text = "Origen";
+            this.columnHeaderOrig.Width = 85;
+            // 
+            // columnHeaderDest
+            // 
+            this.columnHeaderDest.Text = "Destino";
+            this.columnHeaderDest.Width = 85;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(813, 327);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(160, 24);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Aristas del Grafo";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(1105, 327);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(151, 24);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Aristas del MST";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(117)))), ((int)(((byte)(144)))));
             this.ClientSize = new System.Drawing.Size(1572, 773);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.listViewKruskal);
+            this.Controls.Add(this.listViewGraph);
             this.Controls.Add(this.buttonRestart);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.buttonCreateMST);
             this.Controls.Add(this.labelRemainingVertices);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox);
@@ -288,10 +294,9 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVerticesNumber)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -302,17 +307,20 @@
         private Label label2;
         private Button buttonCreateVertices;
         private GroupBox groupBox1;
-        private GroupBox groupBox2;
-        private Button buttonCreateEdge;
-        private ComboBox comboBoxDestinationVertex;
-        private ComboBox comboBoxOriginVertex;
-        private Label label4;
-        private Label label3;
         private Label labelRemainingVertices;
         private Button buttonCreateMST;
         private TreeView treeView;
         private GroupBox groupBox3;
         private Button buttonRestart;
         private NumericUpDown numericUpDownVerticesNumber;
+        private ListView listViewGraph;
+        private ListView listViewKruskal;
+        private ColumnHeader columnHeaderOrigin;
+        private ColumnHeader columnHeaderDestination;
+        private ColumnHeader columnHeaderWeight;
+        private ColumnHeader columnHeaderOrig;
+        private ColumnHeader columnHeaderDest;
+        private Label label3;
+        private Label label4;
     }
 }

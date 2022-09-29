@@ -17,7 +17,6 @@ namespace KruskalAlgorithm
             bmpGraph = new Bitmap(pictureBox.Width, pictureBox.Height);
             bmpKruskal = new Bitmap(pictureBox.Width, pictureBox.Height);
             
-
             graph = new Graph();
         }
 
@@ -28,10 +27,8 @@ namespace KruskalAlgorithm
             labelRemainingVertices.Text = "Selecciona dónde quieres poner los " + numericUpDownVerticesNumber.Value + " vértices en el lienzo de arriba!!";
             labelRemainingVertices.ForeColor = Color.Black;
             pictureBox.Enabled = true;
-            pictureBox.BackColor = Color.White;
 
             groupBox1.Enabled = false;
-            groupBox2.Enabled = true;
         }
 
         private void pictureBox_MouseClick(object sender, MouseEventArgs e)
@@ -55,54 +52,22 @@ namespace KruskalAlgorithm
             if(graph.VertexCount == (int)numericUpDownVerticesNumber.Value) {
                 drawGraph(bmpGraph);
                 fillTreeView();
-                fillComboBoxOrigin();
 
-                DialogResult result = MessageBox.Show("¿Quieres generar las aristas del grafo automáticamente?", "Información", MessageBoxButtons.YesNo);
+                autoCreateEdges();
+                drawGraph(bmpGraph);
+                fillTreeView();
+                showListViewGraph();
 
-                if(result == DialogResult.Yes) {
-                    autoCreateEdges();
-                    drawGraph(bmpGraph);
-                    fillTreeView();
-                    groupBox2.Enabled = false;
-                    buttonCreateMST.Enabled = true;
-                }
+                buttonCreateMST.Enabled = true;
             }
         }
 
-        private void comboBoxOriginVertex_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            fillComboBoxDestination();
-        }
-
-        private void buttonCreateEdge_Click(object sender, EventArgs e)
-        {
-            Vertex v_o = (Vertex)comboBoxOriginVertex.SelectedItem;
-            Vertex v_d = (Vertex)comboBoxDestinationVertex.SelectedItem;
-
-            if(v_o == null || v_d == null) {
-                MessageBox.Show("Debes seleccionar de Origen y Destino", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if(existEdge(getPath(v_o, v_d), bmpOriginal)) {
-                v_o.addEdge(v_o, v_d);
-                v_d.addEdge(v_d, v_o);
-            }
-            else
-                MessageBox.Show("Para crear una arista no debe haber un vértice en medio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-            fillTreeView();
-            drawGraph(bmpGraph);
-            fillComboBoxOrigin();
-            comboBoxDestinationVertex.Items.Clear();
-
-            // validar si se añadio por lo menos una arista pada cada vertice (si el grafo ya es conexo)
-            buttonCreateMST.Enabled = true;
-        }
 
         private void buttonCreateMST_Click(object sender, EventArgs e)
         {
-            drawKruskal(graph.kruskal(), bmpKruskal);
+            List<Edge> mst = graph.kruskal();
+            drawKruskal(mst, bmpKruskal);
+            showListViewKruskal(mst);
         }
 
 
@@ -197,24 +162,19 @@ namespace KruskalAlgorithm
         }
 
 
-        
-        // ************* ComboBoxes *************
-        void fillComboBoxOrigin()
-        {
-            comboBoxOriginVertex.Items.Clear();
 
-            foreach(Vertex v in graph.Vertices)
-                if(v.Edges.Count < graph.VertexCount)
-                    comboBoxOriginVertex.Items.Add(v);
+        // ************* ListViews *************
+        void showListViewGraph()
+        {
+            foreach(Vertex v_o in graph.Vertices)
+                foreach(Edge e in v_o.Edges)
+                    listViewGraph.Items.Add(new ListViewItem(new String[] {e.Origin.Id.ToString(), e.Destination.Id.ToString(), e.Weight.ToString()}));
         }
 
-        void fillComboBoxDestination()
+        void showListViewKruskal(List<Edge> mst)
         {
-            comboBoxDestinationVertex.Items.Clear();
-
-            foreach(Vertex v in graph.Vertices)
-                if(v != (Vertex)comboBoxOriginVertex.SelectedItem && !v.existEdge((Vertex)comboBoxOriginVertex.SelectedItem))
-                    comboBoxDestinationVertex.Items.Add(v);
+            foreach(Edge e in mst)                
+                listViewKruskal.Items.Add(new ListViewItem(new String[] { e.Origin.Id.ToString(), e.Destination.Id.ToString()}));
         }
 
 
