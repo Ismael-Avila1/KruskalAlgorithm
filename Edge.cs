@@ -12,7 +12,6 @@ namespace KruskalAlgorithm
         Vertex destination;
         float weight;
 
-        public Edge() { }
 
         public Edge(Vertex origin, Vertex destination)
         {

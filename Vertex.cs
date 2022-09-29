@@ -12,10 +12,6 @@ namespace KruskalAlgorithm
         Point position;
         List<Edge> edges;
 
-        public Vertex()
-        {
-            edges = new List<Edge>();
-        }
 
         public Vertex(int id, Point position)
         {
