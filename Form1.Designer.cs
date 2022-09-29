@@ -38,7 +38,6 @@
             this.buttonCreateMST = new System.Windows.Forms.Button();
             this.treeView = new System.Windows.Forms.TreeView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.buttonRestart = new System.Windows.Forms.Button();
             this.listViewGraph = new System.Windows.Forms.ListView();
             this.columnHeaderOrigin = new System.Windows.Forms.ColumnHeader();
             this.columnHeaderDestination = new System.Windows.Forms.ColumnHeader();
@@ -156,7 +155,7 @@
             this.buttonCreateMST.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonCreateMST.Location = new System.Drawing.Point(731, 607);
             this.buttonCreateMST.Name = "buttonCreateMST";
-            this.buttonCreateMST.Size = new System.Drawing.Size(630, 100);
+            this.buttonCreateMST.Size = new System.Drawing.Size(829, 100);
             this.buttonCreateMST.TabIndex = 8;
             this.buttonCreateMST.Text = "Crear MST con Kruskal";
             this.buttonCreateMST.UseVisualStyleBackColor = false;
@@ -182,21 +181,6 @@
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Visualización del Grafo";
-            // 
-            // buttonRestart
-            // 
-            this.buttonRestart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(65)))), ((int)(((byte)(68)))));
-            this.buttonRestart.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonRestart.Enabled = false;
-            this.buttonRestart.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonRestart.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonRestart.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.buttonRestart.Location = new System.Drawing.Point(1384, 607);
-            this.buttonRestart.Name = "buttonRestart";
-            this.buttonRestart.Size = new System.Drawing.Size(176, 100);
-            this.buttonRestart.TabIndex = 11;
-            this.buttonRestart.Text = "Reestablecer Grafo";
-            this.buttonRestart.UseVisualStyleBackColor = false;
             // 
             // listViewGraph
             // 
@@ -280,7 +264,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.listViewKruskal);
             this.Controls.Add(this.listViewGraph);
-            this.Controls.Add(this.buttonRestart);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.buttonCreateMST);
             this.Controls.Add(this.labelRemainingVertices);
@@ -311,7 +294,6 @@
         private Button buttonCreateMST;
         private TreeView treeView;
         private GroupBox groupBox3;
-        private Button buttonRestart;
         private NumericUpDown numericUpDownVerticesNumber;
         private ListView listViewGraph;
         private ListView listViewKruskal;
