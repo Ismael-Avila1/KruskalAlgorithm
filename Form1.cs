@@ -53,7 +53,7 @@ namespace KruskalAlgorithm
                 drawGraph(bmpGraph);
                 fillTreeView();
 
-                autoCreateEdges();
+                createEdges();
                 drawGraph(bmpGraph);
                 fillTreeView();
                 showListViewGraph();
@@ -276,9 +276,7 @@ namespace KruskalAlgorithm
             return true;
         }
 
-
-        // ************* CheckEdges *************
-        void autoCreateEdges()
+        void createEdges()
         {
             foreach(Vertex v_o in graph.Vertices)
                 foreach(Vertex v_d in graph.Vertices)
