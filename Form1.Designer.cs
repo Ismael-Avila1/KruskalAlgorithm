@@ -227,7 +227,7 @@
             // columnHeaderOrig
             // 
             this.columnHeaderOrig.Text = "Origen";
-            this.columnHeaderOrig.Width = 85;
+            this.columnHeaderOrig.Width = 75;
             // 
             // columnHeaderDest
             // 
