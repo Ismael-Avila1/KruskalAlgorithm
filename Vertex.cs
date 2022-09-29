@@ -50,14 +50,6 @@ namespace KruskalAlgorithm
             return edges[pos].Destination;
         }
 
-        public bool existEdge(Vertex destination)
-        {
-            foreach(Edge edge in edges)
-                if(edge.Destination == destination)
-                    return true;
-            return false;            
-        }
-
 
         public override string ToString()
         {
